@@ -193,4 +193,5 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredIns
 window.addEventListener('appinstalled',()=>{deferredInstallPrompt=null;const b=document.getElementById('installBtn');if(b)b.style.display='none';});
 async function installApp(){if(!deferredInstallPrompt){alert('If the Install button is not available, open the browser menu and choose “Add to Home screen” or “Install app”.');return;}deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null;}
 </script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js',{scope:'./'}).catch(e=>console.warn('M1 dev offline cache unavailable',e));}</script>
 </body></html>
